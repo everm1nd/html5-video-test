@@ -1,4 +1,4 @@
-var RANDOM_MATRIX = [14,71,152]
+var RANDOM_MATRIX = [14,30,42,71,94,103,131,152,170]
 
 function irand(min, max) {
   return Math.round(rand(min, max));
@@ -28,17 +28,22 @@ function pause() {
 	video().pause();
 }
 
+
+function matrix_random() {
+	return RANDOM_MATRIX[irand(0,RANDOM_MATRIX.length - 1)]
+}
+
 function random() {
 	return rand(0,180)
 }
 
-function goto(second) {
-	video().currentTime = second	
+function call_jesus() {
+	video().currentTime = matrix_random()	
 }
 
 $(document).ready(function() {
 	play();
 	$(document).keypress(function() {
-		goto(random());
+		call_jesus();
 	});
 });
