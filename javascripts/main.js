@@ -1,3 +1,5 @@
+var RANDOM_MATRIX = [14,71,152]
+
 function irand(min, max) {
   return Math.round(rand(min, max));
 }
@@ -27,12 +29,16 @@ function pause() {
 }
 
 function random() {
-	video().currentTime = rand(0,180)
+	return rand(0,180)
+}
+
+function goto(second) {
+	video().currentTime = second	
 }
 
 $(document).ready(function() {
 	play();
 	$(document).keypress(function() {
-		random();
+		goto(random());
 	});
 });
