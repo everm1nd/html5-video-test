@@ -20,14 +20,6 @@ function rand(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function getController() {
-	if (document._hasController) {
-		return document._controller;
-	} else {
-		return document._video;
-	}
-}
-
 function video() {
   return videoCtrl.video;
 }
