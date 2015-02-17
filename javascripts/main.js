@@ -1,4 +1,16 @@
-var RANDOM_MATRIX = [14,30,42,71,94,103,131,152,170]
+var videoCtrl;
+var RANDOM_MATRIX = [
+  { seconds: 14 },
+  { seconds: 30 },
+  { seconds: 42 },
+  { seconds: 71 },
+  { seconds: 94 },
+  { seconds: 103 },
+  { seconds: 131 },
+  { seconds: 152 },
+  { seconds: 170 },
+  { SMPTE: '00:01:12:22' }
+]
 
 function irand(min, max) {
   return Math.round(rand(min, max));
@@ -17,7 +29,7 @@ function getController() {
 }
 
 function video() {
-	return $('video')[0]
+  return videoCtrl.video;
 }
 
 function play() {
@@ -28,7 +40,6 @@ function pause() {
 	video().pause();
 }
 
-
 function matrix_random() {
 	return RANDOM_MATRIX[irand(0,RANDOM_MATRIX.length - 1)]
 }
@@ -38,10 +49,21 @@ function random() {
 }
 
 function call_jesus() {
-	video().currentTime = matrix_random()	
+	videoCtrl.seekTo(matrix_random());
+}
+
+function init() {
+  videoCtrl = VideoFrame({
+    id : 'videoPlayer',
+    frameRate: FrameRates.film,
+    callback : function(response) {
+        console.log('callback response: ' + response);
+    }
+  });
 }
 
 $(document).ready(function() {
+  init();
 	play();
 	$(document).keypress(function() {
 		call_jesus();
