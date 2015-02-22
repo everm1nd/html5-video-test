@@ -7,6 +7,8 @@ function bind_events() {
 
 $(document).ready(function() {
   videoController = new VideoController();
+  guiController = new GuiController();
+  
 	videoController.play();
   bind_events();
 });
