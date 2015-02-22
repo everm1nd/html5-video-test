@@ -13,9 +13,15 @@ function GuiController() {
   (function init() {
     var menu = new Menu();
     var gui = new dat.GUI();
+
     gui.add(menu, 'name');
-    gui.add(menu, 'speed', 0.5, 2);
-    gui.add(menu, 'played');
+    gui.add(menu, 'speed', 0.1, 10).onChange(function(value){
+      videoController.setSpeed(value);
+    });
+    gui.add(menu, 'played').onFinishChange(function(value){
+      if (value) { videoController.play(); }
+      else { videoController.pause(); };
+    });
     gui.add(menu, 'jump');
   })();
 };

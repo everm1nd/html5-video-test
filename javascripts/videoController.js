@@ -29,6 +29,10 @@ function VideoController() {
     controller.seekTo(_.sample(RANDOM_MATRIX));
   };
 
+  this.setSpeed = function(rate) {
+    video.playbackRate = rate;
+  };
+
   // private
 
   (function init() {
